@@ -1,0 +1,16 @@
+/* 去除鍵盤鼠標事件引發的焦點樣式 */
+*:focus-visible {
+  outline: none
+} 
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  user-select: none;
+  font-family: 'Open Sans', 'SimHei', sans-serif;  
+}
+@font-face {
+  font-family: 'Open Sans'; 
+  src: url('../src/theme/fonts/OpenSans-VariableFont_wdth,wght.ttf');
+}

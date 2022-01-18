@@ -1,0 +1,7 @@
+export { default as DeviceMenu } from './Device'
+//export { default as DeviceMenu } from './Device2'
+export { default as ControlMenu } from './ControlLite'
+export { default as AdjustMenu } from './Adjust'
+export { default as EffectMenu } from './Effect'
+export { default as OutputMenu } from './Output'
+export { default as SettingsMenu } from './Settings'

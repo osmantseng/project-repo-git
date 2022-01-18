@@ -1,0 +1,23 @@
+export const ColorData =  {
+    mainColor : '#0078AE',
+    lineColor : '#C8C6C4',
+    hoverColor : '#D8D8D8',
+    selectedBackgroundColor : '#F1F1F1',
+    sliderTextColor : '#1D2C41',
+    titleColor : '#003A60',
+    secondaryTitleColor : '#605E5C',
+    sliderBackgroundColor : '#FCFCFC',
+    imgTextBackgroundColor : '#1D2C41',
+    sliderDisabled : '#C4C4C4',
+    radioColor : '#818181',
+    textColor : '#605E5C',
+    settingInfo: '#979797',
+    buttonHover: '#003A60',
+    disabledColor: '#979797',
+    errorColor: '#FF0000',
+    deleteBtnBackground: '#C4C4C4',
+    btnHoverColor: '#1D2C41',
+    cropColor: '#00D1FF',
+    dialogText: '#979797',
+    initLineBar: '#9CC8DC'
+}

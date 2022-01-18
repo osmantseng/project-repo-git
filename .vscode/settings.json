@@ -1,0 +1,9 @@
+{
+    "cSpell.words": [
+        "Kensington",
+        "unmax",
+        "unmaximize"
+    ],
+    "npm-scripts.showStartNotification": false,
+    "python.formatting.provider": "black"
+}

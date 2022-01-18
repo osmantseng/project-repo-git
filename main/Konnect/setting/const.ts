@@ -1,0 +1,17 @@
+export enum ESettingType {
+  Collection = "Collection",
+  CamSettingCollection = "CamSettingCollection",
+  CamDevice = "CamDevice",
+  CamTemplate = "CamTemplate",
+  CamRatio = "CamRatio",
+  CamVerticalFlip = "CamVerticalFlip",
+  CamHorizintalFlip = "CamHorizintalFlip",
+  CamEffect = "CamEffect",
+  CamAdjust = "CamAdjust",
+  CamAdjustCollection = "CamAdjustCollection",
+  ObsSettingCollection = "ObsSettingCollection",
+  ObsFrameRate = "ObsFrameRate",
+  ObsResolution = "ObsResolution",
+  TemplateCollection = "TemplateCollection",
+  LastStateCollection = "LastStateCollection",
+}

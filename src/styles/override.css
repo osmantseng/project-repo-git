@@ -1,0 +1,69 @@
+.top-bar {
+  -webkit-app-region: drag;
+  -webkit-user-select: none;
+}
+.select-mode {
+  height: 26px;
+  margin-right: 3px;
+  -webkit-app-region: no-drag;
+  border-right: 2px solid #d8d8d8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+/* select选框下划线 */
+.MuiInput-root:after {
+  border-bottom: none !important;
+}
+.MuiInput-root:before {
+  border-bottom: none !important;
+}
+.MuiInput-root:hover:before {
+  border-bottom: none !important;
+}
+/* button按钮hover效果 */
+.MuiButton-root:hover {
+  background-color: #003a60 !important;
+  color: #fff;
+}
+
+/* Device菜单中labelName overflow时的样式 */
+.label-overflow {
+  max-height: 40px;
+  margin: 2px 5px 2px 0;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  word-break: break-all;
+}
+
+/* loading頁面效果 */
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.bind-loading {
+  -webkit-animation: spin 3s linear infinite;
+  animation: spin 3s linear infinite;
+}
+
+/* Ratio operate button tooltip style */
+.MuiTooltip-popper[data-popper-placement*="top"] .css-f87kb2-MuiTooltip-tooltip {
+  margin-bottom: -10px !important;
+}

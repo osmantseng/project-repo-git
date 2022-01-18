@@ -1,0 +1,107 @@
+{
+  "name": "KensingtonKonnect",
+  "version": "0.6.2",
+  "author": "WistronITS",
+  "private": true,
+  "main": "build/main.js",
+  "dependencies": {
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "@material-ui/core": "^5.0.0-beta.5",
+    "@material-ui/styles": "^4.11.4",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^12.20.24",
+    "@types/react": "^17.0.20",
+    "@types/react-dom": "^17.0.0",
+    "async": "^3.2.2",
+    "axios": "^0.24.0",
+    "electron-dl": "^3.3.0",
+    "electron-settings": "^4.0.2",
+    "electron-window-state": "^5.0.3",
+    "form-data": "^4.0.0",
+    "i18next": "^21.4.2",
+    "i18next-browser-languagedetector": "^6.1.2",
+    "i18next-http-backend": "^1.3.1",
+    "lodash": "^4.17.21",
+    "mouse-event": "^1.0.5",
+    "obs-studio-node": ".\\obs-studio-node-0.3.21-win6432.tar.gz",
+    "qs": "^6.10.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-i18next": "^11.14.1",
+    "react-scripts": "4.0.3",
+    "swiper": "^7.3.1",
+    "typescript": "^4.1.2",
+    "usb-detection": "4.9.0",
+    "uuid": "^8.3.2",
+    "web-vitals": "^1.0.1",
+    "winston": "^3.3.3"
+  },
+  "scripts": {
+    "start": "cross-env BROWSER=none react-scripts start",
+    "start:desktop": "cross-env NODE_ENV=development PORT=3000 electron .",
+    "build:desktop:dev": "tsc --watch -p ./main/tsconfig.json",
+    "build": "cross-env PUBLIC_URL=./ react-scripts build",
+    "build:desktop": "tsc -p ./main/tsconfig.json",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "copyfiles": "copyfiles -u 3 main/build/Release/UVCCamCtrl.node build",
+    "package": "rimraf ./build && yarn build && yarn build:desktop && yarn copyfiles && electron-builder build -c.extraMetadata.main=build/main.js",
+    "build:installer": "node build_installer.js",
+    "package2": "cross-env NODE_ENV=development rimraf ./dist && yarn package",
+    "build:npm": "electron-rebuild -f --version 14.1.0",
+    "dist": "cross-env NODE_ENV=production rimraf ./dist && yarn package && yarn build:installer"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/async": "^3.2.10",
+    "@types/electron": "^1.6.10",
+    "@types/lodash": "^4.14.175",
+    "@types/qs": "^6.9.7",
+    "@types/uuid": "^8.3.1",
+    "cross-env": "^7.0.3",
+    "electron": "14.1.0",
+    "electron-builder": "^22.11.7",
+    "electron-debug": "^3.2.0",
+    "electron-devtools-installer": "^3.2.0",
+    "electron-log": "^4.4.1",
+    "electron-rebuild": "^3.2.5",
+    "electron-updater": "^4.3.9",
+    "electron-wix-msi": "^3.2.0",
+    "replace-in-file": "^6.3.2",
+    "xml2js": "^0.4.23"
+  },
+  "build": {
+    "productName": "Konnect",
+    "appId": "com.kensington.Konnect",
+    "asar": true,
+    "electronVersion": "14.1.0",
+    "asarUnpack": [
+      "build/filters/**"
+    ],
+    "win": {
+      "target": "dir",
+      "icon": "public/kensington_software_logo.ico"
+    }
+  }
+}

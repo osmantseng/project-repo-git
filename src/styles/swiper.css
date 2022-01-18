@@ -1,0 +1,71 @@
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.swiper-wrapper {
+  margin: 0;
+}
+.swiper-pagination-bullet {
+  width: 45px;
+  height: 8px;
+  text-align: center;
+  opacity: 1;
+  background: #d8d8d8;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+
+.swiper-pagination-bullet-active {
+  background: #0078ae;
+}
+
+.swiper-button-prev, .swiper-button-next {
+  color: #0C77AD;
+}
+.swiper-button-prev {
+  left: 19px;
+}
+.swiper-button-next {
+  right: 19px;
+}
+.swiper-button-prev:after, .swiper-button-next:after {
+  font-size: 30px;
+  font-weight: 700;
+}
+.swiper-button-prev.swiper-button-disabled, .swiper-button-next.swiper-button-disabled {
+  opacity: 0;
+}
+.MuiBackdrop-root {
+  opacity: 0.9 !important;
+}
