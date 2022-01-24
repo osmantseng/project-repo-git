@@ -3,6 +3,7 @@ import { v4 as uuid } from "uuid";
 import _, { Dictionary } from "lodash";
 import * as path from "path";
 import { app, BrowserWindow, IpcMain } from "electron";
+const { byOS, OS, getOS } = require('../../main/operating-systems');
 import {
   KonnectFilters,
   KonnectCropRatios,
@@ -1302,10 +1303,31 @@ class OBSHandler {
       let scene = osn.SceneFactory.create(i.toString());
       let video_device_id =
         i === 0 && videoDevices.length > 0 ? videoDevices[0].value : "";
+
+      /*OSMAN Modifily 20220118
       let input = osn.InputFactory.create("dshow_input", i.toString(), {
         video_device_id: video_device_id,
         res_type: 1,
       });
+      */
+
+      let input = byOS({
+        [OS.Windows]: () =>
+        osn.InputFactory.create("dshow_input", i.toString(), {
+          // Somehow if video_device_id is set to "does_not_exist", virtual cameras will be hidden.
+          // audio_device_id: "does_not_exist",
+          video_device_id: video_device_id,
+          res_type: 1,
+        }),
+        [OS.Mac]: () =>
+        osn.InputFactory.create("av_capture_input", i.toString(), {
+          // Somehow if video_device_id is set to "does_not_exist", virtual cameras will be hidden.
+          // audio_device_id: "does_not_exist",
+          device: video_device_id,
+          use_preset : true
+        }),
+      })
+
       let camSet = new CamSet(input, scene, this);
       this._camSets.push(camSet);
     }

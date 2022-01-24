@@ -2,6 +2,7 @@ import _ from "lodash";
 import * as osn from "obs-studio-node";
 import { logger } from "../util";
 import { IWidthHeight, IVideoDevice } from "./obsInterface";
+const { byOS, OS, getOS } = require('../../main/operating-systems');
 
 /* OBS backend settings */
 export const setOBSSetting = (
@@ -153,11 +154,30 @@ const _getVideoDevices = (input: osn.IInput) => {
  */
 export const getVideoDevices = (input?: osn.IInput) => {
   if (_.isNil(input)) {
+
+    /*OSMAN Modifily 20220118
     let dummyInput = osn.InputFactory.create("dshow_input", "video", {
       // Somehow using this setting will hide virtual cameras
       // audio_device_id: "does_not_exist",
       video_device_id: "does_not_exist",
     });
+    */
+
+    let dummyInput = byOS({
+      [OS.Windows]: () =>
+      osn.InputFactory.create("dshow_input", "video", {
+        // Somehow if video_device_id is set to "does_not_exist", virtual cameras will be hidden.
+        // audio_device_id: "does_not_exist",
+        video_device_id: "does_not_exist",
+      }),
+      [OS.Mac]: () =>
+      osn.InputFactory.create("av_capture_input", "video", {
+        // Somehow if video_device_id is set to "does_not_exist", virtual cameras will be hidden.
+        // audio_device_id: "does_not_exist",
+        device: "does_not_exist",
+      }),
+    })
+
     let res = _getVideoDevices(dummyInput);
     dummyInput.release();
     return res;

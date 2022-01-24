@@ -53,6 +53,7 @@ import { ICamSet } from '../camSet/interface';
 import async from 'async';
 import path from 'path';
 const usbDetect = require('usb-detection');
+const { byOS, OS, getOS } = require('../../../main/operating-systems');
 
 export default class OBSHandlerP1 extends OBSHandler implements IDependencies {
   private _camCount = 0;
@@ -150,11 +151,37 @@ export default class OBSHandlerP1 extends OBSHandler implements IDependencies {
   }
 
   buildCamSet(name: string, video_device_id: string | number = '') {
+
+
+    /*OSMAN Modifily 20220118
     let input = osn.InputFactory.create(EOBSInputType.DShowInput, name, {
       [EOBSDShowProp.video_device_id]: video_device_id,
       [EOBSDShowProp.res_type]: 1,
       [EOBSDShowProp.resolution]: ''
     });
+    */
+
+    let input = byOS({
+      [OS.Windows]: () =>
+      osn.InputFactory.create(EOBSInputType.DShowInput, name, {
+        [EOBSDShowProp.video_device_id]: video_device_id,
+        [EOBSDShowProp.res_type]: 1,
+        [EOBSDShowProp.resolution]: ''
+        
+      }),
+      [OS.Mac]: () =>
+      osn.InputFactory.create(EOBSInputType.AVCaptureInput, name, {
+        device : video_device_id,
+        use_preset : true,
+        preset : '"height":240,"width":320',
+        resolution : ''
+      }),
+    })
+
+    console.debug(' This is byOS function test: ' + input);
+
+    //////////////
+
     input.muted = true;
     input.volume = 0;
     input.syncOffset = { sec: 0, nsec: 0 } as osn.ITimeSpec;
